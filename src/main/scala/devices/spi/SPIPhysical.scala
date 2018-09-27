@@ -116,7 +116,7 @@ class SPIPhysical(c: SPIParamsBase) extends Module {
 
   //Adding fine-granularity delay buffers on the received data
   val fine_grain_delay = Seq.fill(io.port.dq.size) {Module(new BlackBoxDelayBuffer())}
-  for (j <- 0 to (io.port.dq.size - 1).U ) { 
+  for (j <- 0 to (io.port.dq.size - 1)) { 
     fine_grain_delay(j).io.in := rxd(j)
     fine_grain_delay(j).io.sel := io.ctrl.extradel.fine
     rxd_delayed(j) := fine_grain_delay(j).io.mux_out
